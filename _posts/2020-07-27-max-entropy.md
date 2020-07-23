@@ -2,7 +2,7 @@
 layout:     post
 title:      "How can the principle of maximum entropy help us debias data?"
 date:       2020-07-27 10:00:00
-summary:    A new data debiasing framework published at ICML uses a “maximally noncommittal” distribution 
+summary:    A new data debiasing framework published at ICML uses a “maximally noncommittal” distribution.
 author:     Chris Hays
 author_link: https://github.com/johnchrishays
 ---
