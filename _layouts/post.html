@@ -2,6 +2,12 @@
 layout: default
 ---
 
+<style>
+  #author:hover {
+    color: #000;
+  }
+</style>
+
 {% assign minutes = content | strip_html | number_of_words | divided_by: 180 %}
 {% if minutes == 0 %}
 {% assign minutes = 1 %}
@@ -9,6 +15,11 @@ layout: default
 
 <div class="post-header mb2">
   <h1>{{ page.title }}</h1>
+  {% if page.author_link %}
+    <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #777;" href="{{ page.author_link }}"><h3 id="author">{{ page.author | default: "No author" }}</h3></a><br>
+  {% else %}
+    <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #777;">{{ page.author | default: "No author" }}</span><br>
+  {% endif %}
   <span class="post-meta">{{ page.date | date: site.date_format }}</span><br>
   {% if page.update_date %}
     <span class="post-meta">{{ site.text.post.updated | default: "Updated" }}: {{ page.update_date | date: site.date_format }}</span><br>

@@ -15,7 +15,13 @@ layout: default
 	      {{ post.date | date: "%b %-d, %Y" }}
 	    {% endif %}
 	  </p>
-          <a href="{{ post.url | relative_url }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
+          <a href="{{ post.url | relative_url }}" class="post-link"><h3 class="h1 post-title" style="margin-bottom:15px;">{{ post.title }}</h3></a>
+          {% if page.author_link %}
+            <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #777;" href="{{ page.author_link }}"><h3 id="author">{{ post.author | default: "No author" }}</h3></a><br>
+          {% else %}
+            <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #777;">{{ post.author | default: "No author" }}</span><br>
+          {% endif %}
+          <br>
           <span class="post-summary">
             {% if post.summary %}
               {{ post.summary }}
