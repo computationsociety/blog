@@ -1,10 +1,10 @@
 # Site settings
-title:       Pixyll
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+title:       A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society.
+email:       computationsociety@gmail.com
+author:      Chris Hays
+description: "A creative space where scientists from different disciplines work together to address the emerging questions that arise as algorithm and data-driven technologies permeate and alter various aspects of modern society."
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "http://computationsociety.github.io"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
@@ -102,7 +102,7 @@ text:
     email:    'Email Address'
     content:  'What would you like to say?'
     subject:  'New submission!'
-    submit:   'Say Hello'
+    submit:   'Contact'
     ajax:
       sending:  'sending..'
       sent:     'Message sent!'
