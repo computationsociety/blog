@@ -120,27 +120,14 @@ Let’s walk through an example to see how it works, using $$\tau = 1$$. Conside
 
 On the left, the green icons are positive class labels ($$Y=1$$) and the pink icons are negative class labels ($$Y=0$$), while the circled icons are samples from the population. As in the algorithm, denote $$Z=0$$ to be the underrepresented group with the female icons and $$Z=1$$ to be the overrepresented group with the male icons. We can construct the following table for values of $$c(\cdot)$$ and $$c(\cdot, \cdot)$$. 
 
-Expression
-Value
-Explanation
-$$ c(1) $$
-3 
-Count positive class labels from the sampled data
-$$ c(0) $$
-4 
-Count negative class labels from the sampled data
-$$ c(1, 1) $$
-2
-Count male positive class labels from the sampled data
-$$ c(1, 0) $$
-1
-Count female positive class labels from the sampled data
-$$ c(0, 1) $$
-2
-Count male negative class labels from the sampled data
-$$ c(0, 0) $$
-2
-Count female negative class labels from the sampled data
+| Expression | Value | Explanation
+|-------|--------|---------|
+| $$ c(1) $$ | 3  | Count positive class labels from the sampled data |
+| $$ c(0) $$ | 4  | Count negative class labels from the sampled data |
+| $$ c(1, 1) $$ | 2 | Count male positive class labels from the sampled data |
+| $$ c(1, 0) $$ | 1 | Count female positive class labels from the sampled data |
+| $$ c(0, 1) $$ | 2 | Count male negative class labels from the sampled data |
+| $$ c(0, 0) $$ | 2 | Count female negative class labels from the sampled data |
 
 
 Calculating the value of $$w$$ for the female positive class label, we have $$c(1)/c(1,0) = 3$$. We can do this for each $$\alpha$$ to find the weights shown below.
