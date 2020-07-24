@@ -21,7 +21,7 @@ The methods described in the blog post are _preprocessing methods_ which remove 
 
 ## Approaches for debiasing data
 
-In the fairness literature, there are two established approaches for debiasing data: modifying the dataset or learning a fair distribution. Fair data is ensured using fairness constraints, or mathematical statements encoding a particular notion of fairness. See [this post](https://algorithmicfairness.wordpress.com/2016/09/26/on-the-impossibility-of-fairness/) for context on many types of fairness constraints.
+In the fairness literature, there are two established approaches for debiasing data: modifying the dataset or learning a fair distribution. Fair data is ensured using _fairness constraints_, or mathematical statements encoding some formal definition of fairness. See [this post](https://algorithmicfairness.wordpress.com/2016/09/26/on-the-impossibility-of-fairness/) for context on many types of fairness constraints.
 
 To modify a dataset to satisfy fairness constraints, we can either reassign the protected attributes of some data points or reweight the frequency of data points to satisfy fairness constraints. (See [this post](https://towardsdatascience.com/reweighing-the-adult-dataset-to-make-it-discrimination-free-44668c9379e8) for a walkthrough of how this might work in practice.) These approaches are often computationally efficient, but there is no way to generate new data points. As a result, machine learning models trained on the data can fail to generalize. (See Chawla’s “Data mining for imbalanced datasets: An overview” in [Data Mining and Knowledge Discovery Handbook](https://doi.org/10.1007/0-387-25465-X_40) for an overview.) 
 
@@ -54,7 +54,7 @@ Now that we understand some of the desirable properties of the maximum entropy f
 
 > ### Finding a maximum entropy distribution
 > Given domain $$ \Omega \subseteq \mathbb{R}^d $$, prior distribution $$ q : \Omega \rightarrow [0, 1] $$ and marginal vector $$ \theta \in [0,1]^d $$, the maximum entropy distribution is the probability distribution which maximizes
-> <p style="text-align: center;">$$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$ such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$</p>
+> <p style="text-align: center;">$$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$</p> such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$.
 
 The problem stated above is [convex](https://en.wikipedia.org/wiki/Convex_optimization), so it can be solved efficiently in the number of parameters. But as the problem is currently stated, there are $$ 2^d $$ parameters. Thus, it could take exponential time in the dimension of the data to solve. To reduce the optimization problem down to polynomial time in the dimension of the data, the problem can be restated as a minimization problem (its [dual](https://en.wikipedia.org/wiki/Duality_(optimization))) with only $$ d $$ variables:
 
@@ -104,9 +104,9 @@ Once we have a prior and marginal vector, it can be shown that the max-entropy d
 ## Choosing a prior distribution
 
 To determine how the prior distribution can satisfy statistical rate constraints, we can first think about the uniform distribution $$ u $$. Since 
-$$ u(\alpha) = \frac{1}{|\Omega|} $$
+ <p style="text-align: center;">$$ u(\alpha) = \frac{1}{|\Omega|} $$</p>
 for any $$ \alpha $$, the statistical rate is
-$$ \frac{p\left[Y = y\;\middle|\; Z = z_i\right]}{p\left[Y = y \;\middle|\; Z = z_j\right]} = 1$$
+ <p style="text-align: center;">$$ \frac{p\left[Y = y\;\middle|\; Z = z_i\right]}{p\left[Y = y \;\middle|\; Z = z_j\right]} = 1$$</p>
 for any class label $$y \in \mathcal{Y}$$ and protected attributes $$z_i, z_j \in \Omega_l$$ for $$l \in I_z$$. Thus, the uniform distribution satisfies $$\tau = 1$$ statistical fairness.
 
 However, the uniform distribution does not encode any information from the sample data. To encode information from the empirical data while preserving $$\tau$$-statistical fairness, Celis et al use a reweighting algorithm. See the figure below from the paper.
@@ -135,9 +135,9 @@ Calculating the value of $$w$$ for the female positive class label, we have $$c(
 ![Example figure 2]({{ site.baseurl }}/images/second-example.png "example figure 2")
 
 Notice that the sum of the weights assigned to male and female positive class labels respectively are equal to each other (3 = 1.5 + 1.5). Similarly, the total weight assigned to male and female negative class labels respectively are equal to each other (2 + 2 = 2+ 2). Thus, the ratio of the conditional probabilities is equal to 1:
- $$ \frac{p \left[ Y=1 \;\middle|\; Z=0 \right]} {p \left[ Y=1 \;\middle|\; Z=1 \right]} = 1$$ 
+  <p style="text-align: center;">$$ \frac{p \left[ Y=1 \;\middle|\; Z=0 \right]} {p \left[ Y=1 \;\middle|\; Z=1 \right]} = 1$$</p> 
 and 
-$$ \frac{p \left[ Y=0 \;\middle|\; Z=0 \right]} {p \left[ Y=0 \;\middle|\; Z=1 \right]} = 1$$
+ <p style="text-align: center;">$$ \frac{p \left[ Y=0 \;\middle|\; Z=0 \right]} {p \left[ Y=0 \;\middle|\; Z=1 \right]} = 1$$</p>
 so the prior distribution has a $$\tau=1$$ statistical rate.
 
 One might think that since it satisfies $$\tau$$-statistical fairness and resembles a reweighted version of the sample data, this construction of the prior distribution is itself a sufficient debiasing mechanism. However, finding the max-entropy distribution pushes the distribution towards the empirical distribution of the data while still satisfying fairness constraints.
