@@ -16,9 +16,9 @@ layout: default
 <div class="post-header mb2">
   <h1>{{ page.title }}</h1>
   {% if page.author_link %}
-    <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #777;" href="{{ page.author_link }}"><h3 id="author">{{ page.author | default: "No author" }}</h3></a><br>
+    <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #444;" href="{{ page.author_link }}"><h3 id="author">{{ page.author | default: "No author" }}</h3></a><br>
   {% else %}
-    <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #777;">{{ page.author | default: "No author" }}</span><br>
+    <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #444;">{{ page.author | default: "No author" }}</span><br>
   {% endif %}
   <span class="post-meta">{{ page.date | date: site.date_format }}</span><br>
   {% if page.update_date %}

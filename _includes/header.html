@@ -1,7 +1,8 @@
 <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
     <div class="measure">
-      <a href="{{ "/" | relative_url }}" class="site-title">{{ site.title }}</a>
+      <a href="{{ "/" | relative_url }}" class="site-title" style="font-weight:bold; font-size:200%;">{{ site.title }}</a>
+      <p style="clear:both; color:#777; font-weight:normal; font-size:120%;">{{site.description}}</p>
       <nav class="site-nav">
         {% include navigation.html %}
       </nav>

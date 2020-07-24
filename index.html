@@ -9,17 +9,17 @@ layout: default
       {% for post in paginator.posts %}
         <div class="post py3">
           <p class="post-meta">
-	    {% if site.date_format %}
-	      {{ post.date | date: site.date_format }}
-	    {% else %}
-	      {{ post.date | date: "%b %-d, %Y" }}
-	    {% endif %}
-	  </p>
+      	    {% if site.date_format %}
+      	      {{ post.date | date: site.date_format }}
+      	    {% else %}
+      	      {{ post.date | date: "%b %-d, %Y" }}
+      	    {% endif %}
+      	  </p>
           <a href="{{ post.url | relative_url }}" class="post-link"><h3 class="h1 post-title" style="margin-bottom:15px;">{{ post.title }}</h3></a>
           {% if page.author_link %}
             <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #777;" href="{{ page.author_link }}"><h3 id="author">{{ post.author | default: "No author" }}</h3></a><br>
           {% else %}
-            <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #777;">{{ post.author | default: "No author" }}</span><br>
+            <span style="font-style: normal; font-weight: 300; font-size: 120%; color: #777;">{{ post.author | default: "No author" }}</span><br>
           {% endif %}
           <br>
           <span class="post-summary">

@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "How can the principle of maximum entropy help us debias data?"
+title:      "Debiasing data: An efficient framework using the principle of maximum entropy"
 date:       2020-07-27 10:00:00
-summary:    A new data debiasing framework published at ICML uses a “maximally noncommittal” distribution.
+summary:    An old idea from statistical physics leads to a new algorithm for mitigating societal bias in data.
 author:     Chris Hays
 author_link: https://github.com/johnchrishays
 ---
@@ -44,7 +44,7 @@ Next, we discuss the maximum entropy framework, why it is an appealing tool for 
 
 ## Maximum entropy distributions make the fewest assumptions about the data
 
-For a given set of data, there may be many distributions which can encode the data. The principle of maximum entropy says that the distribution with the maximum entropy relative to other possible distributions is the one that best represents the current state of knowledge: it is “maximally noncommittal” in the sense that it makes the fewest assumptions about the true distribution of the data.
+For a given set of data, there may be many distributions which can encode the data. The principle of maximum entropy says that the distribution with the maximum entropy relative to other possible distributions is the one that best represents the current state of knowledge: it is “maximally noncommittal” in the sense that it makes the fewest assumptions about the true distribution of the data. [E.T. Jaynes](https://en.wikipedia.org/wiki/Edwin_Thompson_Jaynes), when he was working on questions in statistical physics, first advocated for the approach.
 
 Max-entropy distributions have been studied [across many applications](https://www.cs.princeton.edu/research/techreps/TR-797-07) as a density estimation method. They also have other desirable properties: 
 - The number of parameters in a max-entropy distribution is equal to the dimension of the data.
@@ -161,6 +161,8 @@ The max-entropy framework was evaluated empirically on two benchmark fairness da
 They also trained a classifier on the debiased data to report the statistical rates of the classifier.
 
 The researchers found that the novel max-entropy framework performs as well as or better than existing debiasing methods in finding a distribution close to the data — while attaining good representation and statistical rates simultaneously. Across both of the datasets tested, the statistical rate and representation rate of the computed max-entropy distribution was at least 0.97, very close to the maximum of 1 and higher than the raw data. The classifier trained on the COMPAS dataset lost accuracy by 0.03 compared to the raw data, while the classifier trained on the Adult dataset achieved the same accuracy as the classifier trained on the raw data; these accuracies are the same or better than existing debiasing methods using the same benchmark datasets. See the complete results in the paper for representation rates, data statistical rates, classifier statistical rates, classifier accuracy, and run-times for both datasets.
+
+The code for the algorithm is [available on GitHub](https://github.com/vijaykeswani/Fair-Max-Entropy-Distributions).
 
 ## To conclude
 

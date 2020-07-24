@@ -1,8 +1,8 @@
 # Site settings
-title:       Computation and Society
+title:       "Computation and Society"
 email:       computationsociety@gmail.com
-author:      Chris Hays
-description: A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society.
+author:      "Computation and Society"
+description: "A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society."
 baseurl:     ""
 url:         "http://computationsociety.github.io"
 date_format: "%b %-d, %Y"
