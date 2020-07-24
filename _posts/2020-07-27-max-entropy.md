@@ -32,7 +32,7 @@ A simple reweighting scheme from ([Kamiran and Calders 2012](https://core.ac.uk/
 
 Alternatively, we can learn a distribution which is close to that induced by the data points while satisfying fairness constraints. (See this 2017 [paper](https://papers.nips.cc/paper/6988-optimized-pre-processing-for-discrimination-prevention) by Calmon et al for an example of this approach.) This approach allows machine learning models to sample from the learned distribution, with the potential to learn greater generalization from the data. However, past research on fair distributions has produced algorithms which run in time exponential in the dimension of the data; thus, they can be infeasible for large datasets.
 
-![An empirical distribution of violence recidivism by race demonstrating how disparate impacts in algorithmic sentencing decisions might occur. See this excellent blog post for a longer discussion of the need for computing fair distributions.]({{ site.baseurl }}/images/northpoint.jpg "An empirical distribution of violence recidivism by race demonstrating how disparate impacts in algorithmic sentencing decisions might occur. See this excellent blog post for a longer discussion of the need for computing fair distributions.")
+![An empirical distribution of violent recidivism by race demonstrating how disparate impacts in algorithmic sentencing decisions might occur. See this excellent blog post for a longer discussion of the need for computing fair distributions.]({{ site.baseurl }}/images/northpoint.jpg "An empirical distribution of violence recidivism by race demonstrating how disparate impacts in algorithmic sentencing decisions might occur. See this excellent blog post for a longer discussion of the need for computing fair distributions.")
 An empirical distribution of violence recidivism by race demonstrating how disparate impacts in algorithmic sentencing decisions might occur. See [this excellent blog post](https://blog.acolyer.org/2020/02/03/measure-mismeasure-fairness/) for a longer discussion of the need for computing fair distributions.
 {: style="color:gray; font-size: 80%;"}
 
@@ -54,13 +54,13 @@ Now that we understand some of the desirable properties of the maximum entropy f
 
 > ### Finding a maximum entropy distribution
 > Given domain $$ \Omega \subseteq \mathbb{R}^d $$, prior distribution $$ q : \Omega \rightarrow [0, 1] $$ and marginal vector $$ \theta \in [0,1]^d $$, the maximum entropy distribution is the probability distribution which maximizes
-> $$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$ such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$
+> <p style="text-align: center;">$$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$ such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$</p>
 
 The problem stated above is [convex](https://en.wikipedia.org/wiki/Convex_optimization), so it can be solved efficiently in the number of parameters. But as the problem is currently stated, there are $$ 2^d $$ parameters. Thus, it could take exponential time in the dimension of the data to solve. To reduce the optimization problem down to polynomial time in the dimension of the data, the problem can be restated as a minimization problem (its [dual](https://en.wikipedia.org/wiki/Duality_(optimization))) with only $$ d $$ variables:
 
 > ### Dual for finding a maximum entropy distribution
-> The maximum entropy distribution can be specified by $$ d $$ parameters $$ \lambda \in \mathbb{R}^d $$ by finding the minimum of the function
-> $$ h_{\theta,q} (\lambda) := \log \left( \sum_{\alpha \in \Omega} q(\alpha) e^{\langle \alpha - \theta, \lambda \rangle}\right) $$
+> The maximum entropy distribution can be specified by $$ d $$ parameters $$ \lambda \in \mathbb{R}^d $$ by finding the minimum of the function 
+> <p style="text-align: center;">$$ h_{\theta,q} (\lambda) := \log \left( \sum_{\alpha \in \Omega} q(\alpha) e^{\langle \alpha - \theta, \lambda \rangle}\right) $$</p>
 
 Solving this dual optimization problem is non-trivial, but it has been done in [recent work](https://arxiv.org/abs/1711.02036). For the sake of brevity, we won’t state the dual or discuss specifics of this problem here. 
 
@@ -72,12 +72,12 @@ Researchers usually include fairness metrics in debiasing algorithms by consider
 
 > ### Representation rate
 > Consider the feature domain $$\Omega := \Omega_1 \times \dots \times \Omega_d = \{0, 1\}^d$$. (For simplicity, each attribute $$\Omega_i$$ is binary, but these definitions can be adapted to multi-valued discrete attributes.) Partition the attributes into three classes where 
-$$I_x$$ is the set of protected attributes.
-$$I_y$$ is the set of outcome variables.
-$$I_z$$ is the set of other remaining attributes.
-
-> For $$\tau \in (0,1]$$, a distribution $$p: \Omega \rightarrow [0, 1]$$ is said to have representation rate $$\tau$$ with respect to a protected attribution $$l \in I_z$$ if for all $$z_i, z_j \in \Omega_l$$, we have 
-> $$\frac{p[Z=z_i]}{p[Z=z_j]} \geq \tau$$
+- $$I_x$$ is the set of protected attributes,
+- $$I_y$$ is the set of outcome variables,
+- and $$I_z$$ is the set of other remaining attributes.  
+>
+> For $$\tau \in (0,1]$$, a distribution $$p: \Omega \rightarrow [0, 1]$$ is said to have representation rate $$\tau$$ with respect to a protected attribution $$l \in I_z$$ if for all $$z_i, z_j \in \Omega_l$$, we have
+> <p style="text-align: center;">$$\frac{p[Z=z_i]}{p[Z=z_j]} \geq \tau$$</p>
 > where $$Z$$ is distributed according to the marginal of $$p$$ restricted to $$\Omega_l$$.
 
 In other words, the representation rate is the outcome-independent ratio of the probability assigned to the under-represented group and the probability assigned to the over-represented group. 
@@ -86,7 +86,7 @@ Note that all attributes are split into binary categories. We can extend the res
 
 > ### Statistical rate
 > Define the set of class labels to be $$\mathcal{Y} := \times_{i \in I_y} \Omega_i$$. For $$ \tau \in (0, 1] $$, a distribution $$ p : \Omega \rightarrow [0, 1] $$ is said to have statistical rate $$ \tau $$ with respect to a protected attribute $$ l \in I_z $$ and a class label $$y \in \mathcal{Y}$$ if for all $$z_i, z_j \in \Omega_l$$, we have 
-> $$ \frac{p\left[Y=y \;\middle|\; Z=z_i \right]}{p\left[Y=y \;\middle|\; Z=z_j \right]} \geq \tau $$
+> <p style="text-align: center;">$$ \frac{p\left[Y=y \;\middle|\; Z=z_i \right]}{p\left[Y=y \;\middle|\; Z=z_j \right]} \geq \tau $$</p>
 > where $$Y$$ is the random variable when $$p$$ is restricted to $$\mathcal{Y}$$ and $$Z$$ when $$p$$ is restricted to $$\Omega_l$$.
 
 Then the statistical rate is the ratio of the probability of belonging to a particular class given the individual is in the under-represented group and the probability of belonging to the same class given the individual is in the over-represented group.
