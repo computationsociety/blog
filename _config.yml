@@ -1,8 +1,8 @@
 # Site settings
-title:       A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society.
+title:       Computation and Society
 email:       computationsociety@gmail.com
 author:      Chris Hays
-description: "A creative space where scientists from different disciplines work together to address the emerging questions that arise as algorithm and data-driven technologies permeate and alter various aspects of modern society."
+description: A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society.
 baseurl:     ""
 url:         "http://computationsociety.github.io"
 date_format: "%b %-d, %Y"
