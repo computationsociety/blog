@@ -2,7 +2,7 @@
 layout:     post
 title:      "Debiasing data: An efficient framework using the principle of maximum entropy"
 date:       2020-07-27 10:00:00
-summary:    An old idea from statistical physics leads to a new algorithm for mitigating societal bias in data.
+summary:    An old idea from statistical physics leads to a new algorithm for mitigating societal biases in data.
 author:     Chris Hays
 author_link: https://github.com/johnchrishays
 ---
