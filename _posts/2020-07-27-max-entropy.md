@@ -50,7 +50,7 @@ Max-entropy distributions have been studied [across many applications](https://w
 - The number of parameters in a max-entropy distribution is equal to the dimension of the data.
 - Maximum entropy distributions are specified by a prior distribution and marginal vector, described in more detail later. The prior and marginal can be viewed as simple, interpretable ways to specify fairness constraints while finding a maximum entropy distribution which is close to the sample data.
 
-Now that we understand some of the desirable properties of the maximum entropy framework, let us go into some of the mathematical specifics of maximum entropy distributions, starting with a definition. For simplicity, here we restrict ourselves to the case when the domain $\Omega$ is $\{0,1\}^d$. 
+Now that we understand some of the desirable properties of the maximum entropy framework, let us go into some of the mathematical specifics of maximum entropy distributions, starting with a definition. For simplicity, here we restrict ourselves to the case when the domain $$\Omega$ is $\{0,1\}^d$$. 
 
 > ### Finding a maximum entropy distribution
 > Given prior distribution $$ q : \Omega \rightarrow [0, 1] $$ and marginal vector $$ \theta \in [0,1]^d $$, the maximum entropy distribution is the probability distribution which maximizes
