@@ -9,17 +9,29 @@
   width: 100%;
 }
 
-.social-icons a.fa {
+.share-links a {
   cursor: pointer;
   opacity: 0.8;
   padding: 0.2em;
+  text-decoration: none;
 }
 
-.social-icons a.fa:hover {
-  opacity: 1;
+.social-button {
+  width: 3em;
+  height: 3em;
+  margin: 0.4em 0em;
+  border-radius: 50%;
+}
+
+.social-button:hover {
+  opacity: 0.8;
 }
 
 .social-icons iframe[title=Flattr] {
   position: relative;
   top: 0.1em;
+}
+
+a:link {
+  text-decoration: none!important;
 }

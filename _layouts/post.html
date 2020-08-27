@@ -16,30 +16,34 @@ layout: default
 <div class="post-header mb2">
   <h1>{{ page.title }}</h1>
   {% if page.author_link %}
-    <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #444;" href="{{ page.author_link }}"><h3 id="author">{{ page.author | default: "No author" }}</h3></a><br>
+    <a style="font-style: normal; font-weight: normal; font-size: 120%; text-decoration: none; color: #444;" href="{{ page.author_link }}"><h3 id="author">{{ page.author | default: "No author" }}</h3></a>
   {% else %}
     <span style="font-style: normal; font-weight: normal; font-size: 120%; color: #444;">{{ page.author | default: "No author" }}</span><br>
   {% endif %}
-  <span class="post-meta">{{ page.date | date: site.date_format }}</span><br>
-  {% if page.update_date %}
-    <span class="post-meta">{{ site.text.post.updated | default: "Updated" }}: {{ page.update_date | date: site.date_format }}</span><br>
-  {% endif %}
-  <span class="post-meta small">
-  {% if page.minutes %}
-    {{ page.minutes }} {{ site.text.post.minute_read | default: "minute read" }}
-  {% else %}
-    {{ minutes }} {{ site.text.post.minute_read | default: "minute read" }}
-  {% endif %}
+  <span class="post-meta post-meta-item">{{ page.date | date: site.date_format }}</span><br>
+    {% if page.update_date %}
+      <span class="post-meta">{{ site.text.post.updated | default: "Updated" }}: {{ page.update_date | date: site.date_format }}</span><br>
+    {% endif %}
+    <span class="post-meta small">
+    {% if page.minutes %}
+      {{ page.minutes }} {{ site.text.post.minute_read | default: "minute read" }}
+    {% else %}
+      {{ minutes }} {{ site.text.post.minute_read | default: "minute read" }}
+    {% endif %}
   </span>
 </div>
 
-<article class="post-content">
-  {{ content }}
-</article>
-
-{% if site.show_sharing_icons %}
-  {% include share_buttons.html %}
-{% endif %}
+<div class="content-container">
+  <div class="content-item social">
+    {% if site.show_sharing_icons %}
+      {% include share_buttons.html %}
+    {% endif %}
+  </div>
+  <article class="post-content content-item">
+    {{ content }}
+  </article>
+  </div>
+</div>
 
 {% if site.show_post_footers %}
   {% include post_footer.html %}
