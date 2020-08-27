@@ -18,7 +18,7 @@
     {% endif %}
 
     {% if site.share_linkedin %}
-      <form action="http://www.linkedin.com/shareArticle" rel="nofollow" target="_blank" method=GET>
+      <form action="https://www.linkedin.com/shareArticle" rel="nofollow" target="_blank" method=GET>
         <button class="fa fa-linkedin social-button" type="submit" title="{{ site.text.share_buttons.linkedin | default: "Share on LinkedIn" }}"></button>
       <input type="hidden" name="url" value="{{ site.url }}{{ page.url }}"/>
       <input type="hidden" name="title" value="{{ page.title }}"/>
