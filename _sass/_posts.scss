@@ -45,6 +45,22 @@
   margin-right: 2em;
 }
 
+.pull-quote {
+  display: block;
+  float: right;
+  padding: 10px 10px 0 10px;
+  margin: 0 0 10px 10px;
+  width: 60%;
+  font-size: 1.3em;
+  line-height: 1.2em;
+  text-align: right;
+  color: #666;
+  font-style: italic;
+  background: url('../images/quotemarks.png') top left no-repeat;
+  background-size: 100px;
+}
+
+
 .meta,
 .post-meta {
   width: auto;
