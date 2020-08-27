@@ -5,7 +5,7 @@
     {% if site.share_facebook %}
     <form action="https://facebook.com/sharer.php" rel="nofollow" target="_blank" method=GET>
       <button class="fa fa-facebook social-button" type="submit" title="{{ site.text.share_buttons.facebook | default: "Share on Facebook" }}"></button>
-      <input type="hidden" name="u" value="{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"/>
+      <input type="hidden" name="u" value="{{ site.url }}{{ page.url }}"/>
     </form>
     {% endif %}
 
