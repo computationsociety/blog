@@ -3,14 +3,17 @@
 
   <div class="share-links">
     {% if site.share_facebook %}
-    <form action="https://facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" method=GET>
+    <form action="https://facebook.com/sharer.php" rel="nofollow" target="_blank" method=GET>
       <button class="fa fa-facebook social-button" type="submit" title="{{ site.text.share_buttons.facebook | default: "Share on Facebook" }}"></button>
+      <input type="hidden" name="u" value="{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"/>
     </form>
     {% endif %}
 
     {% if site.share_twitter %}
-      <form action="https://twitter.com/intent/tweet?text={{ page.title | cgi_escape }}&amp;url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" method="GET">
+      <form action="https://twitter.com/intent/tweet" rel="nofollow" target="_blank" method="GET">
         <button class="fa fa-twitter social-button" type="submit" title="{{ site.text.share_buttons.twitter | default: "Share on Twitter" }}"></button>
+      <input type="hidden" name="text" value="{{ page.title | cgi_escape }}"/>
+      <input type="hidden" name="url" value="{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"/>
       </form>
     {% endif %}
 
@@ -19,8 +22,10 @@
     {% endif %}
 
     {% if site.share_linkedin %}
-      <form action="http://www.linkedin.com/shareArticle?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" method=GET>
+      <form action="http://www.linkedin.com/shareArticle" rel="nofollow" target="_blank" method=GET>
         <button class="fa fa-linkedin social-button" type="submit" title="{{ site.text.share_buttons.linkedin | default: "Share on LinkedIn" }}"></button>
+      <input type="hidden" name="url" value="{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"/>
+      <input type="hidden" name="title" value="{{ page.title | cgi_escape }}"/>
       </form>
     {% endif %}
 
