@@ -14,7 +14,7 @@ date:       2015-12-01 9:00:00
 summary:    Learn to write a post in markdown
 author:     Your name
 permalink:  /guide/
-visible:    False
+published:  false
 ---
 
 Articles are written in markdown (kramdown).  
