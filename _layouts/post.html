@@ -43,6 +43,9 @@ layout: default
     {{ content }}
   </article>
   </div>
+  {% if page.author_bio %}
+    <p style="color:gray; font-size: 80%; border-top: thin solid #f3f3f3; padding-top: 1em">{{ page.author_bio }}</p>
+  {% endif %}
 </div>
 
 {% if site.show_post_footers %}

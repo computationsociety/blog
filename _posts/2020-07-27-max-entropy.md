@@ -6,6 +6,7 @@ summary:    An old idea from statistical physics leads to a new algorithm for mi
 author:     Chris Hays
 author_link: https://github.com/johnchrishays
 image: /images/first-example.png
+author_bio: Chris Hays in an affiliate of the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science.
 ---
 Over the last decade, increasing attention has been paid to how biased data can impact individuals from marginalized groups. [A new paper published last week](https://proceedings.icml.cc/static/paper_files/icml/2020/2750-Paper.pdf) at the 2020 ICML conference by [Elisa Celis](https://datascienceethics.org/elisacelis/), [Vijay Keswani](https://vijaykeswani.github.io/)  (Yale Statistics and Data Science), and [Nisheeth Vishnoi](http://cs.yale.edu/homes/vishnoi) (Yale Computer Science) provides a novel pre-processing approach for preventing adverse impacts of biases in data in downstream applications.
 
