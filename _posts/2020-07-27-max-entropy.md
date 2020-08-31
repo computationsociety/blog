@@ -6,7 +6,7 @@ summary:    An old idea from statistical physics leads to a new algorithm for mi
 author:     Chris Hays
 author_link: https://github.com/johnchrishays
 image: /images/first-example.png
-author_bio: Chris Hays in an affiliate of the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science.
+author_bio: Chris Hays in a Research Affiliate with the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science. This article benefited from the feedback of <a href="http://www.cs.yale.edu/homes/vishnoi/Home.html">Nisheeth Vishnoi</a> and <a href="https://datascienceethics.org/elisacelis/">Elisa Celis</a>.
 ---
 Over the last decade, increasing attention has been paid to how biased data can impact individuals from marginalized groups. [A new paper published last week](https://proceedings.icml.cc/static/paper_files/icml/2020/2750-Paper.pdf) at the 2020 ICML conference by [Elisa Celis](https://datascienceethics.org/elisacelis/), [Vijay Keswani](https://vijaykeswani.github.io/)  (Yale Statistics and Data Science), and [Nisheeth Vishnoi](http://cs.yale.edu/homes/vishnoi) (Yale Computer Science) provides a novel pre-processing approach for preventing adverse impacts of biases in data in downstream applications.
 
@@ -26,6 +26,9 @@ when designing a just system.
 ## Approaches for debiasing data
 
 In the fairness literature, there are two established approaches for debiasing data: modifying the dataset or learning a fair distribution. Fair data is ensured using _fairness constraints_, or mathematical statements encoding some formal definition of fairness. See [this post](https://algorithmicfairness.wordpress.com/2016/09/26/on-the-impossibility-of-fairness/) for context on many types of fairness constraints.
+
+Following the principle of maximum entropy, the framework produces a max-entropy distribution with a prior distribution determined by reweighting the data points and a carefully chosen marginal to satisfy fairness constraints.
+{: .pull-quote}
 
 To modify a dataset to satisfy fairness constraints, one can either reassign the protected attributes of some data points or reweight the frequency of data points to satisfy fairness constraints. (See [this post](https://towardsdatascience.com/reweighing-the-adult-dataset-to-make-it-discrimination-free-44668c9379e8) for a walkthrough of how this might work in practice.) These approaches are often computationally efficient, but there is no way to generate new data points. As a result, machine learning models trained on the data can fail to generalize. (See Chawla’s “Data mining for imbalanced datasets: An overview” in [Data Mining and Knowledge Discovery Handbook](https://doi.org/10.1007/0-387-25465-X_40) for an overview.) 
 
@@ -70,7 +73,7 @@ Before we discuss the specifics of the maximum entropy framework can help debias
 
 ## Fairness metrics: representation and statistical rates
 
-Researchers usually include fairness metrics in debiasing algorithms by considering either outcome _independent_ or _dependent_ constraints. Outcome independent constraints depend only on the protected attributes of the data, while outcome dependent constraints depend on the protected attributes and outcome variables of the data. In the paper, Celis et al consider two well-studied fairness metrics: **representation rate**, an outcome independent constraint, and **statistical rate**, an outcome dependent constraint. (Most papers consider just one or the other of these metrics.)
+Researchers usually include fairness metrics in debiasing algorithms by considering either outcome _independent_ or _dependent_ constraints. Outcome independent constraints depend only on the protected attributes of the data, while outcome dependent constraints depend on the protected attributes and outcome variables of the data. In the paper, Celis et al consider two well-studied fairness metrics: *representation rate*, an outcome independent constraint, and *statistical rate*, an outcome dependent constraint. (Most papers consider just one or the other of these metrics.)
 
 > ### Representation rate
 > Consider the feature domain $$\Omega = \Omega_1 \times \dots \times \Omega_d = \{0, 1\}^d$$. (For simplicity, each attribute $$\Omega_i$$ is binary, but these definitions can be adapted to multi-valued discrete attributes.) Partition the attributes into three classes where 
@@ -150,6 +153,9 @@ A simple choice for the marginal vector would be the expectation vector
 $$ \theta = \frac{1}{N} \sum_{\alpha \in \mathcal{S}} \alpha n_\alpha $$
 This would yield a representation rate equivalent to the representation rate of the sample data, since $$ \frac{p\left[ Z = z_i \right]}{p[Z = z_j ]} $$
 for $$i,j \in \Omega_l$$ where $$l \in I_z$$ would be equivalent to the ratio of that attribute in the sample data.
+
+Celis et al found that the novel max-entropy framework performs as well as or better than existing debiasing methods in finding a distribution close to the data — while attaining good representation and statistical rates simultaneously.
+{:.pull-quote}
 
 By contrast, setting every entry of the marginal vector to 0.5 would yield a representation rate of 1, since the ratio of marginal probabilities of attributes from one class would be equal to that from the other: the probability of $$Z = 1$$ would be 0.5 and the probability of $$Z=0$$ would be 0.5. Thus, it is always possible to choose the marginal vector such as to satisfy a $$\tau$$- representation rate for any $$\tau$$.
 
