@@ -5,12 +5,13 @@ permalink: /about/
 tags: about
 ---
 
-This blog is written by a collective of researchers dedicated to discussing foundational questions in computation and society. It was initiated by affiliates of the [Computation and Society Initiative](https://computationsociety.yale.edu/) at Yale.
+This blog is written by a collective of researchers dedicated to discussing foundational questions that arise as algorithm and data-driven technologies permeate and alter various aspects of modern society. It was initiated by affiliates of the [Computation and Society Initiative](https://computationsociety.yale.edu/) at Yale.
 
 ## Contributors
-- [Nisheeth Vishnoi](http://www.cs.yale.edu/homes/vishnoi/Home.html)
+
 - [Elisa Celis](https://datascienceethics.org/elisacelis/)
 - [Chris Hays](https://github.com/johnchrishays/)
+- [Nisheeth Vishnoi](http://www.cs.yale.edu/homes/vishnoi/Home.html)
 
 ## Contributing an article
 
