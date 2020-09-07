@@ -5,7 +5,7 @@ permalink: /about/
 tags: about
 ---
 
-This blog is written by a collective of researchers dedicated to discussing foundational questions that arise as algorithm and data-driven technologies permeate and alter various aspects of modern society. It was initiated by affiliates of the [Computation and Society Initiative](https://computationsociety.yale.edu/) at Yale.
+This blog is written by a collective of researchers dedicated to discussing foundational questions that arise as algorithm- and data-driven technologies permeate and alter various aspects of modern society. It was initiated by affiliates of the [Computation and Society Initiative](https://computationsociety.yale.edu/) at Yale.
 
 ## Contributors
 
