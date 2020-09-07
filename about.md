@@ -10,7 +10,7 @@ This blog is written by a collective of researchers dedicated to discussing foun
 ## Contributors
 
 - [Elisa Celis](https://datascienceethics.org/elisacelis/)
-- [Chris Hays](https://github.com/johnchrishays/)
+- [Chris Hays](https://johnchrishays.com/)
 - [Nisheeth Vishnoi](http://www.cs.yale.edu/homes/vishnoi/Home.html)
 
 ## Contributing an article

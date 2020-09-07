@@ -4,7 +4,7 @@ title:      "Debiasing data: An efficient framework using the principle of maxim
 date:       2020-07-27 10:00:00
 summary:    An old idea from statistical physics leads to a new algorithm for mitigating societal biases in data.
 author:     Chris Hays
-author_link: https://github.com/johnchrishays
+author_link: https://johnchrishays.com/
 image: /images/first-example.png
 author_bio: Chris Hays is a Research Affiliate with the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science. This article benefited from the feedback of <a href="http://www.cs.yale.edu/homes/vishnoi/Home.html">Nisheeth Vishnoi</a> and <a href="https://datascienceethics.org/elisacelis/">Elisa Celis</a>.
 ---
