@@ -14,4 +14,4 @@ This blog is written by a collective of researchers dedicated to discussing foun
 
 ## Contributing an article
 
-If you are interested in writing an article for this blog, please contact one of the contributors listed above or use this website's [contact form]({{ site.baseurl }}{% link contact.html %}). Please follow this [guide]({{ site.baseurl }}{% link guidelines.md %}) to format the post. Credit for the guide (with slight modifications) is due to [Off the Convex Path](https://www.offconvex.org/about/).
+If you are interested in writing an article for this blog, please contact one of the contributors listed above or use the [contact form]({{ site.baseurl }}{% link contact.html %}). Please follow this [guide]({{ site.baseurl }}{% link guidelines.md %}) to format the post. Credit for the guide (with slight modifications) is due to [Off the Convex Path](https://www.offconvex.org/about/).
