@@ -25,6 +25,10 @@
       </form>
     {% endif %}
 
+    {% if site.share_email %}
+      <a href="mailto:?Subject={{ page.title }}&amp;Body=Article: {{ site.url }}{{ page.url }}" class="fa fa-envelope social-button ahref" rel="nofollow" target="_blank" enctype="multipart/form-data" method=GET></a>
+    {% endif %}
+
     {% if site.share_digg %}
       <a class="fa fa-digg" href="http://digg.com/submit?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.digg | default: "Share on Digg" }}"></a>
     {% endif %}
