@@ -2,6 +2,7 @@ _site
 .sass-cache
 .DS_Store
 .jekyll-metadata
+.ipynb_checkpoints
 controlling-bias.github.io
 
 # Ignore the config file that's used for gh-pages.
