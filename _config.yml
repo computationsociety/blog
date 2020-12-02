@@ -1,14 +1,19 @@
 # Site settings
 title:       "Computation and Society"
 email:       computationsociety@gmail.com
-author:      "Computation and Society"
+author:      "Computation and Society Initiative at Yale"
 description: "A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society."
+tagline: "A blog on emerging questions at the intersection of algorithms, data science, and issues that affect modern society."
 baseurl:     ""
-url:         "http://computationsociety.org"
+url:         "https://computationsociety.org"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
  - contact.html
+
+twitter:
+  username: csi_yale
+  card: summary
 
 # Google services
 google_verification:
@@ -123,6 +128,7 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-seo-tag
 # https://github.com/jekyll/jekyll/issues/2938
 exclude:
   - Gemfile
