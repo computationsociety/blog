@@ -6,7 +6,7 @@ summary:    An old idea from statistical physics leads to a new algorithm for mi
 author:     Chris Hays
 author_link: https://johnchrishays.com/
 image: /images/first-example.png
-author_bio: Chris Hays is a Research Affiliate with the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science. This post benefited from the feedback of <a href="http://www.cs.yale.edu/homes/vishnoi/Home.html">Nisheeth Vishnoi</a> and <a href="https://datascienceethics.org/elisacelis/">Elisa Celis</a>.
+author_bio: Chris Hays is a research affiliate with the <a href="https://computationsociety.yale.edu/">Computation and Society Initiative</a> at Yale. He recently graduated from Yale with a degree in computer science. This post benefited from the feedback of <a href="http://www.cs.yale.edu/homes/vishnoi/Home.html">Nisheeth Vishnoi</a> and <a href="https://datascienceethics.org/elisacelis/">Elisa Celis</a>.
 ---
 Over the last decade, increasing attention has been paid to how biased data can impact individuals from marginalized groups. [A new paper published last week](https://proceedings.icml.cc/static/paper_files/icml/2020/2750-Paper.pdf) at the 2020 ICML conference by [Elisa Celis](https://datascienceethics.org/elisacelis/), [Vijay Keswani](https://vijaykeswani.github.io/)  (Yale Statistics and Data Science), and [Nisheeth Vishnoi](http://cs.yale.edu/homes/vishnoi) (Yale Computer Science) provides a novel pre-processing approach for preventing adverse impacts of biases in data in downstream applications.
 
@@ -57,15 +57,22 @@ Max-entropy distributions have been studied [across many applications](https://w
 
 Now that we understand some of the desirable properties of the maximum entropy framework, let us go into some of the mathematical specifics of maximum entropy distributions, starting with a definition. For simplicity, we will just discuss the case when the domain $$\Omega$$ is $$\{0,1\}^d$$. 
 
-> ### Finding a maximum entropy distribution
-> Given prior distribution $$ q : \Omega \rightarrow [0, 1] $$ and marginal vector $$ \theta \in [0,1]^d $$, the maximum entropy distribution is the probability distribution which maximizes
-> <p style="text-align: center;">$$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$</p> such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$.
+### Finding a maximum entropy distribution
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5;"}
+
+Given prior distribution $$ q : \Omega \rightarrow [0, 1] $$ and marginal vector $$ \theta \in [0,1]^d $$, the maximum entropy distribution is the probability distribution which maximizes
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px"}
+<p style="text-align: center; background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;">$$ \sum_{\alpha \in \Omega} p(\alpha) \log \frac{q(\alpha)}{p(\alpha)}$$</p> such that  $$ \sum_{\alpha \in \Omega} \alpha p(\alpha) = \theta $$.
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px"}
 
 The problem stated above is [convex](https://en.wikipedia.org/wiki/Convex_optimization), so it can be solved efficiently in the number of parameters. But as the problem is currently stated, there are $$ 2^d $$ parameters. Thus, it could take exponential time in the dimension of the data to solve. To reduce the optimization problem down to polynomial time in the dimension of the data, the problem can be restated as a minimization problem (its [dual](https://en.wikipedia.org/wiki/Duality_(optimization))) with only $$ d $$ variables:
 
-> ### Dual for finding a maximum entropy distribution
-> The maximum entropy distribution can be specified by $$ d $$ parameters $$ \lambda \in \mathbb{R}^d $$ by finding the minimum of the function 
-> <p style="text-align: center;">$$ h_{\theta,q} (\lambda) = \log \left( \sum_{\alpha \in \Omega} q(\alpha) e^{\langle \alpha - \theta, \lambda \rangle}\right) $$</p>
+### Dual for finding a maximum entropy distribution
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5;"}
+
+The maximum entropy distribution can be specified by $$ d $$ parameters $$ \lambda \in \mathbb{R}^d $$ by finding the minimum of the function 
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
+<p style="text-align: center; background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;">$$ h_{\theta,q} (\lambda) = \log \left( \sum_{\alpha \in \Omega} q(\alpha) e^{\langle \alpha - \theta, \lambda \rangle}\right) $$</p>
 
 Solving this dual optimization problem in polynomial time is non-trivial, but it has been done in [recent work](https://arxiv.org/abs/1711.02036). For the sake of brevity, we won’t state the dual or discuss specifics of this problem in this post. 
 
@@ -75,24 +82,34 @@ Before we discuss the specifics of the maximum entropy framework can help debias
 
 Researchers usually include fairness metrics in debiasing algorithms by considering either outcome _independent_ or _dependent_ constraints. Outcome independent constraints depend only on the protected attributes of the data, while outcome dependent constraints depend on the protected attributes and outcome variables of the data. In the paper, Celis et al consider two well-studied fairness metrics: *representation rate*, an outcome independent constraint, and *statistical rate*, an outcome dependent constraint. (Most papers consider just one or the other of these metrics.)
 
-> ### Representation rate
-> Consider the feature domain $$\Omega = \Omega_1 \times \dots \times \Omega_d = \{0, 1\}^d$$. (For simplicity, each attribute $$\Omega_i$$ is binary, but these definitions can be adapted to multi-valued discrete attributes.) Partition the attributes into three classes where 
+### Representation rate
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5;"}
+Consider the feature domain $$\Omega = \Omega_1 \times \dots \times \Omega_d = \{0, 1\}^d$$. (For simplicity, each attribute $$\Omega_i$$ is binary, but these definitions can be adapted to multi-valued discrete attributes.) Partition the attributes into three classes where 
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
 - $$I_x$$ is the set of protected attributes,
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
 - $$I_y$$ is the set of outcome variables,
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
 - and $$I_z$$ is the set of other remaining attributes.  
->
-> For $$\tau \in (0,1]$$, a distribution $$p: \Omega \rightarrow [0, 1]$$ is said to have representation rate $$\tau$$ with respect to a protected attribution $$l \in I_z$$ if for all $$z_i, z_j \in \Omega_l$$, we have
-> <p style="text-align: center;">$$\frac{p[Z=z_i]}{p[Z=z_j]} \geq \tau$$</p>
-> where $$Z$$ is distributed according to the marginal of $$p$$ restricted to $$\Omega_l$$.
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
+
+For $$\tau \in (0,1]$$, a distribution $$p: \Omega \rightarrow [0, 1]$$ is said to have representation rate $$\tau$$ with respect to a protected attribution $$l \in I_z$$ if for all $$z_i, z_j \in \Omega_l$$, we have
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
+<p style="text-align: center; background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;">$$\frac{p[Z=z_i]}{p[Z=z_j]} \geq \tau$$</p>
+where $$Z$$ is distributed according to the marginal of $$p$$ restricted to $$\Omega_l$$.
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
 
 In other words, the representation rate is the outcome-independent ratio of the probability assigned to the under-represented group and the probability assigned to the over-represented group. 
 
 Note that all attributes are split into binary categories. One can extend the results to the setting where there are more than two categorical labels by using one-hot encodings. Further, to extend the results to settings with continuous-valued attributes, one could split the range of the continuous attribute into discretized bins with one-hot encodings.
 
-> ### Statistical rate
-> Define the set of class labels to be $$\mathcal{Y} = \times_{i \in I_y} \Omega_i$$. For $$ \tau \in (0, 1] $$, a distribution $$ p : \Omega \rightarrow [0, 1] $$ is said to have statistical rate $$ \tau $$ with respect to a protected attribute $$ l \in I_z $$ and a class label $$y \in \mathcal{Y}$$ if for all $$z_i, z_j \in \Omega_l$$, we have 
-> <p style="text-align: center;">$$ \frac{p\left[Y=y \;\middle|\; Z=z_i \right]}{p\left[Y=y \;\middle|\; Z=z_j \right]} \geq \tau $$</p>
-> where $$Y$$ is the random variable when $$p$$ is restricted to $$\mathcal{Y}$$ and $$Z$$ when $$p$$ is restricted to $$\Omega_l$$.
+### Statistical rate
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5;"}
+Define the set of class labels to be $$\mathcal{Y} = \times_{i \in I_y} \Omega_i$$. For $$ \tau \in (0, 1] $$, a distribution $$ p : \Omega \rightarrow [0, 1] $$ is said to have statistical rate $$ \tau $$ with respect to a protected attribute $$ l \in I_z $$ and a class label $$y \in \mathcal{Y}$$ if for all $$z_i, z_j \in \Omega_l$$, we have 
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
+<p style="text-align: center; background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;">$$ \frac{p\left[Y=y \;\middle|\; Z=z_i \right]}{p\left[Y=y \;\middle|\; Z=z_j \right]} \geq \tau $$</p>
+where $$Y$$ is the random variable when $$p$$ is restricted to $$\mathcal{Y}$$ and $$Z$$ when $$p$$ is restricted to $$\Omega_l$$.
+{: style="background-color:#F5F5F5; border: 10px solid #F5F5F5; margin-top:-30px;"}
 
 Then the statistical rate is the ratio of the probability of belonging to a particular class given the individual is in the under-represented group and the probability of belonging to the same class given the individual is in the over-represented group.
 
